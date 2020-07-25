@@ -1,0 +1,7 @@
+Don't install the vagrant-berkshelf plugin (it has been deprecated)
+
+Workflow is now:
+
+berks install
+berks vendor
+vagrant up

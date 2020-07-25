@@ -1,0 +1,44 @@
+{
+  "name": "dbfit_test",
+  "description": "Creates the test databases/set grants for running DbFit tests",
+  "long_description": "dbfit_test Cookbook\n===================\nThis cookbook allows you to set up a Linux VM for running DbFit tests.\n\nLicense and Authors\n-------------------\nAuthors: Jake Benilov\nMaintenance: Bodo Hüsemann\n\nSupported Database Versions\n---------------------------\nDB2 Express-C 11.1.4.4\nOracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production\nPostgres: 9.6\nMySQL 5.7.31 Community Edition\nMicrosoft SQL Server 2017 (RTM-CU21) (KB4557397) - 14.0.3335.7 (X64) \n",
+  "maintainer": "Jake Benilov",
+  "maintainer_email": "benilov@gmail.com",
+  "license": "GNU General Public License, version 2",
+  "platforms": {
+
+  },
+  "dependencies": {
+    "mysql2_chef_gem": ">= 0.0.0",
+    "yum-mysql-community": ">= 0.0.0",
+    "mysql": "~> 8.2",
+    "postgresql": ">= 4.0",
+    "database": ">= 0.0.0",
+    "java": ">= 0.0.0",
+    "swap": ">= 0.0.0",
+    "git": ">= 0.0.0",
+    "lvm": ">= 0.0.0",
+    "firewalld": ">= 0.0.0",
+    "iptables": ">= 0.0.0",
+    "selinux": ">= 0.0.0"
+  },
+  "providing": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "0.3.0",
+  "source_url": "",
+  "issues_url": "",
+  "privacy": false,
+  "chef_versions": [
+
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}

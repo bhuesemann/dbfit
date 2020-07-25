@@ -1,0 +1,2 @@
+vagrant package --output centos7-base.box
+vagrant box add centos7-base centos7-base.box --force

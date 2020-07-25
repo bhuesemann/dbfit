@@ -3,4 +3,4 @@
 
 source "https://supermarket.chef.io"
 
-cookbook 'dbfit_test', :path => "vendor/cookbooks/dbfit_test"
+cookbook 'dbfit_test', :path => "cookbooks/dbfit_test"

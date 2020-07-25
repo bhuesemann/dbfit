@@ -1,0 +1,11 @@
+# DBFit connection properties file
+#
+#1) Either specify full connection string
+connection-string=jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=<projectID>;OAuthType=0;OAuthPvtKeyPath=<key_path.json>;OAuthServiceAcctEmail=<serviceaccount>.iam.gserviceaccount.com;DefaultDataset=<dataset>;
+#
+#2) OR specify service, username and password as separate properties
+#service=
+#username=
+#password=
+#optionally specify a database name
+#database=

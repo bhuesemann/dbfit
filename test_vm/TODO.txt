@@ -1,0 +1,136 @@
+==> default: Vendoring windows (7.0.0) to C:/Users/bhuesemann/.berkshelf/vagrant-berkshelf/shelves/berkshelf20200722-18096-1pd4gy4-default/windows
+==> default: Vendoring yum-mysql-community (4.1.1) to C:/Users/bhuesemann/.berkshelf/vagrant-berkshelf/shelves/berkshelf20200722-18096-1pd4gy4-default/yum-mysql-community
+==> default:
+==> default: Using hostname "dbfitvm" as node name for Chef...
+==> default: The cookbook path 'Z:/workspace/dbfit_4.0/test_vm/cookbooks' doesn't exist. Ignoring...
+
+
+==> default:   - inifile_chef_gem (0.1.0)
+==> default: Installing Cookbook Gems:
+==> default: Compiling Cookbooks...
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource ohai_hint from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_auto_run from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_certificate from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_feature from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_feature_dism from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_feature_powershell from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_font from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_pagefile from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_path from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_printer from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_printer_port from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_share from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_shortcut from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource windows_task from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource build_essential from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource openssl_dhparam from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource openssl_rsa_key from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource openssl_x509 from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource homebrew_cask from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource homebrew_tap from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource apt_preference from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default: [2020-07-21T22:06:50+00:00] WARN: Resource swap_file from the client is overriding the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+==> default:
+==> default: ================================================================================
+==> default: Recipe Compile Error in /var/chef/cache/cookbooks/dbfit_test/recipes/default.rb
+==> default: ================================================================================
+==> default:
+==> default: NoMethodError
+==> default: -------------
+==> default: undefined method `mysql_service' for cookbook: dbfit_test, recipe: mysql :Chef::Recipe
+==> default:
+==> default: Cookbook Trace: (most recent call first)
+==> default: ----------------------------------------
+==> default:   /var/chef/cache/cookbooks/dbfit_test/recipes/mysql.rb:15:in `from_file'
+==> default:   /var/chef/cache/cookbooks/dbfit_test/recipes/default.rb:7:in `from_file'
+==> default:
+==> default: Relevant File Content:
+==> default: ----------------------
+==> default: /var/chef/cache/cookbooks/dbfit_test/recipes/mysql.rb:
+==> default:
+==> default:   8:
+==> default:   9:  mysql_connection_info = {:host => "127.0.0.1",
+==> default:  10:                           :username => 'root',
+==> default:  11:                           :password => node['mysql']['server_root_password']}
+==> default:  12:
+==> default:  13:  users = {"dftest" => "dftest", "dbfit_user" => "password"}
+==> default:  14:
+==> default:  15>> mysql_service 'default' do
+==> default:  16:    version node['mysql']['version'] if node['mysql'] && node['mysql']['version']
+==> default:  17:    bind_address mysql_connection_info[:host]
+==> default:  18:    initial_root_password mysql_connection_info[:password]
+==> default:  19:    action [:create, :start]
+==> default:  20:  end
+==> default:  21:
+==> default:  22:  mysql_database 'dbfit' do
+==> default:  23:    connection mysql_connection_info
+==> default:  24:    action :create
+==> default:
+==> default: System Info:
+==> default: ------------
+==> default: chef_version=16.2.73
+==> default: platform=centos
+==> default: platform_version=7.8.2003
+==> default: ruby=ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-linux]
+==> default: program_name=/bin/chef-solo
+==> default: executable=/opt/chef/bin/chef-solo
+==> default:
+==> default:
+==> default: Running handlers:
+==> default: [2020-07-21T22:06:50+00:00] ERROR: Running exception handlers
+==> default: Running handlers complete
+==> default: [2020-07-21T22:06:50+00:00] ERROR: Exception handlers complete
+==> default: Chef Infra Client failed. 0 resources updated in 04 seconds
+==> default: [2020-07-21T22:06:50+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+==> default: [2020-07-21T22:06:50+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+==> default: [2020-07-21T22:06:50+00:00] FATAL: NoMethodError: undefined method `mysql_service' for cookbook: dbfit_test, recipe: mysql :Chef::Recipe
+Chef never successfully completed! Any errors should be visible in the
+output above. Please fix your recipes so that they properly complete.
+
+Z:\workspace\dbfit_4.0\test_vm (add-bigquery-support)
+
+
+
+==> default: Chef::Exceptions::RecipeNotFound                                                                                 
+==> default: --------------------------------                                                                                 
+==> default: could not find recipe server for cookbook postgresql                                                             
+==> default:                                                                                                                  
+==> default: Cookbook Trace: (most recent call first)                                                                         
+==> default: ----------------------------------------                                                                         
+==> default:   /var/chef/cache/cookbooks/dbfit_test/recipes/postgres.rb:1:in `from_file'                                      
+==> default:                                                                                                                  
+==> default: Relevant File Content:                                                                                           
+==> default: ----------------------                                                                                           
+==> default: /var/chef/cache/cookbooks/dbfit_test/recipes/postgres.rb:                                                        
+==> default:                                                                                                                  
+==> default:   1>> include_recipe "postgresql::server"                                                                        
+==> default:   2:  include_recipe "postgresql::client"                                                                        
+==> default:   3:  include_recipe "postgresql::ruby"                                                                          
+==> default:   4:                                                                                                             
+==> default:   5:  include_recipe "database::postgresql"                                                                      
+==> default:   6:                                                                                                             
+==> default:   7:  postgresql_connection_info = {:host => "127.0.0.1",                                                        
+==> default:   8:                                :port => 5432,                                                               
+==> default:   9:                                :username => 'postgres',                                                     
+==> default:  10:                                :password => node['postgresql']['password']['postgres']}                     
+==> default:                                                                                                                  
+==> default: System Info:                                                                                                     
+==> default: ------------                                                                                                     
+==> default: chef_version=16.2.73                                                                                             
+==> default: platform=centos                                                                                                  
+==> default: platform_version=7.8.2003                                                                                        
+==> default: ruby=ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-linux]                                               
+==> default: program_name=/bin/chef-solo                                                                                      
+==> default: executable=/opt/chef/bin/chef-solo                                                                               
+==> default:                                                                                                                  
+==> default:                                                                                                                  
+==> default: Running handlers:                                                                                                
+==> default: [2020-07-22T21:08:18+00:00] ERROR: Running exception handlers                                                    
+==> default: Running handlers complete                                                                                        
+==> default: [2020-07-22T21:08:18+00:00] ERROR: Exception handlers complete                                                   
+==> default: Chef Infra Client failed. 0 resources updated in 03 seconds                                                      
+==> default: [2020-07-22T21:08:18+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out                      
+==> default: [2020-07-22T21:08:18+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug repor
+t                                                                                                                             
+==> default: [2020-07-22T21:08:18+00:00] FATAL: Chef::Exceptions::RecipeNotFound: could not find recipe server for cookbook po
+stgresql                                                                                                                      
