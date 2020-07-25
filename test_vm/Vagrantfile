@@ -43,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "recipe[dbfit_test::postgres]",
                     "recipe[dbfit_test::oracle]",
                     "recipe[dbfit_test::db2]",
-                    #"recipe[dbfit_test::informix]",
+                    "recipe[dbfit_test::informix]",
                     "recipe[dbfit_test::gradle]"
                   ]
     chef.json = {

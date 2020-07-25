@@ -15,7 +15,7 @@ if [[ -f "$ORACLE_RPM" ]]; then
     echo "Oracle rpm found and already unzipped. Going on..."
 elif [[ -f $ORACLE_ZIP ]]; then
     echo "Oracle rpm zip found. Unzipping ..."
-    unzip -o $RPM_PATH/oracle-xe-*.rpm.zip
+    unzip -o $RPM_PATH/oracle-xe-*.rpm.zip -d /tmp
 else
     echo
     echo "Go to http://www.oracle.com/technetwork/products/express-edition/downloads/index.html, download oracle-xe-*.rpm"
@@ -24,7 +24,7 @@ else
     exit 2
 fi
 
-yum install -y $RPM_PATH/Disk1/oracle-xe-*.rpm
+yum install -y /tmp/Disk1/oracle-xe-*.rpm
 if [[ $? != 0 ]]; then
     echo "rpm installation failed"
     exit 1
@@ -41,7 +41,7 @@ EOF
 CONFIG_CMD="source ${ORACLE_ENV_SCRIPT} && sqlplus / as sysdba @ ${ORACLE_SQL_SCRIPT}"
 su -s /bin/bash oracle -c "${CONFIG_CMD}" || { echo "Config via '${CONFIG_CMD}' failed!" 2>&1; exit 1; }
 
-rm -rf $RPM_PATH/Disk1
+rm -rf /tmp/Disk1
 
 exit 0
 
