@@ -216,6 +216,7 @@ task fastbuild(dependsOn: [
     ':dbfit-java:teradata:check',
     ':dbfit-java:hana:check',
     ':dbfit-java:bigquery:check',
+    ':dbfit-java:exasol:check',
     ':dbfit-java:derby:integrationTest',
     ':dbfit-java:hsqldb:integrationTest'
     ])
@@ -259,7 +260,8 @@ def proprietaryLibs() {
      '**/sqljdbc*.jar',
      '**/ifxjdbc*.jar',
      '**/ngdbc*.jar',
-     '**/bigquery/*.jar'
+     '**/bigquery/*.jar',
+     '**/exasol-jdbc*.jar'
     ] as Set
 }
 

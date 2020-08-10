@@ -41,6 +41,9 @@ allprojects {
             artifactPattern "https://s3.amazonaws.com/dbfit/[artifact]-[revision].[ext]"
             ivyPattern "https://aws.amazon.com/s3/ivy.xml"
         }
+        maven {
+            url "https://maven.exasol.com/artifactory/exasol-releases"
+        }
     }
 
     dependencies {
@@ -281,6 +284,19 @@ project('hana') {
         runtimeOnly 'com.sap.cloud.db.jdbc:ngdbc:2.4.64@jar'
     }
 }
+
+
+project('exasol') {
+    description = 'DBFit Exasol engine'
+       
+    dependencies {
+        implementation project(':dbfit-java:core')
+        implementation 'com.exasol:exasol-jdbc:6.2.5'
+        runtimeOnly 'com.exasol:exasol-jdbc:6.2.5'
+    }
+    ext.connectionPropertiesFiles = ['TestDbConnectionDbFitExasol.properties']
+}
+
 
 project('bigquery') {
     description = 'DBFit bigquery engine'
