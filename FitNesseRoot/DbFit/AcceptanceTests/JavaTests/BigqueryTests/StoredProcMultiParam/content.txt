@@ -1,0 +1,13 @@
+Creating a procedure with Execute DDL throws an exception. But the procedure gets created.
+!| Execute Ddl|!-
+CREATE PROCEDURE AddDelta(IN x INT64, delta INT64, OUT result INT64 )
+BEGIN
+  SET result = x + delta;
+END
+-!|
+
+!|Execute Procedure |AddDelta|
+|x |delta |result?|
+|1 |2 |3|
+
+!| Execute Ddl|drop procedure AddDelta|

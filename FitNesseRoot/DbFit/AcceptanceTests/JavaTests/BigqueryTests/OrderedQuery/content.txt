@@ -1,0 +1,15 @@
+This will fail because the order is wrong
+
+|Ordered Query|SELECT num FROM UNNEST(GENERATE_ARRAY(1, 3)) AS num;|
+|num|
+|fail[2]|
+|fail[1]|
+|3|
+
+This will pass because the order is correct
+
+|Ordered Query|SELECT num FROM UNNEST(GENERATE_ARRAY(1, 3)) AS num;|
+|num|
+|1|
+|2|
+|3|

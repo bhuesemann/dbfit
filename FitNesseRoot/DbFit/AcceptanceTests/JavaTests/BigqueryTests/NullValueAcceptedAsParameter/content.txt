@@ -1,0 +1,7 @@
+Null value should be accepted as parameter
+
+|Set Parameter|myid|null|
+
+|Query|select ifnull(@myid, 'a') val |
+|val|
+|a|

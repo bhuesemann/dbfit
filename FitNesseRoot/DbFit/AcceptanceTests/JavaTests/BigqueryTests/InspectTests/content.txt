@@ -1,0 +1,26 @@
+!3 Inspect query prints columns and data
+!| Inspect query | !-
+SELECT *
+FROM `bigquery-public-data`.samples.INFORMATION_SCHEMA.TABLES
+-! |
+
+Creating a procedure with Execute DDL throws an exception. But the procedure gets created.
+!| Execute Ddl|!-
+CREATE PROCEDURE AddDelta(INOUT x INT64, delta INT64)
+BEGIN
+  SET x = x + delta;
+END
+-!|
+
+!3 Inspect Procedure prints procedure arguments to be used for Execute procedure
+!| Inspect Procedure |AddDelta |
+
+!| Execute Ddl|drop procedure AddDelta|
+
+!| Execute Ddl|CREATE table testtbl(x INT64, y string)|
+
+
+!3 Inspect Table prints table/view columns to be used for Insert/Update/Query procedure
+!| Inspect Table | testtbl |
+
+!| Execute Ddl|drop table testtbl|

@@ -1,0 +1,3 @@
+!|dbfit.BigqueryTest|
+
+!|ConnectUsingFile|TestDbConnectionDbFitBigquery.properties|

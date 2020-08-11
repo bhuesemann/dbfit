@@ -1,0 +1,7 @@
+This table matches only n, so it will report that 4 is a wrong value for 2
+
+|Query|SELECT num, num*2 calc FROM UNNEST(GENERATE_ARRAY(1, 3)) AS num;|
+|num|calc?|
+|1|2|
+|2|fail[7]|
+|3|6|

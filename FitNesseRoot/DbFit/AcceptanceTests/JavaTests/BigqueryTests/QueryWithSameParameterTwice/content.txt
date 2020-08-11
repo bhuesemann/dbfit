@@ -1,0 +1,5 @@
+|Set Parameter|p|1|
+
+|Query|SELECT @p as numa, @p as numb|
+|numa|numb|
+|1|1|

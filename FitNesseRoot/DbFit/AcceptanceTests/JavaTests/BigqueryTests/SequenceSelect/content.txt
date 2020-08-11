@@ -1,0 +1,7 @@
+!3 Query Results do not have to be in the same order as table data
+
+|Query|SELECT num FROM UNNEST(GENERATE_ARRAY(1, 3)) AS num;|
+|num|
+|2|
+|3|
+|1|
