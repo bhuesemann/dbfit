@@ -96,19 +96,22 @@ public class ExasolEnvironment extends AbstractDbEnvironment {
 
     // List interface has sequential search, so using list instead of array to map types
     // see https://docs.exasol.com/sql_references/data_types/datatypedetails.htm
-    private static List<String> stringTypes =
-            Arrays.asList(new String[] {"VARCHAR", "CHAR", "GEOMETRY", "HASHTYPE"});
-    private static List<String> intTypes = Arrays.asList(new String[] {});
-    private static List<String> longTypes = Arrays.asList(new String[] {"BIGINT", "LONG"});
-    private static List<String> floatTypes = Arrays.asList(new String[] {});
-    private static List<String> doubleTypes = Arrays.asList(new String[] {"DOUBLE PRECISION"});
+    // https://docs.exasol.com/sql_references/data_types/datatypealiases.htm
+    private static List<String> stringTypes = Arrays.asList(new String[] {"VARCHAR", "CHAR",
+            "NCLOB", "CLOB", "GEOMETRY", "HASHTYPE", "NCHAR", "VARCHAR2", "LONG"});
+    private static List<String> intTypes = Arrays.asList(new String[] {"INTEGER"});
+    private static List<String> longTypes = Arrays.asList(new String[] {"BIGINT"});
+    private static List<String> shortTypes = Arrays.asList(new String[] {"SMALLINT"});
+    private static List<String> floatTypes = Arrays.asList(new String[] {"FLOAT"});
+    private static List<String> doubleTypes =
+            Arrays.asList(new String[] {"DOUBLE PRECISION", "REAL", "DOUBLE"});
     private static List<String> decimalTypes = Arrays.asList(new String[] {"DECIMAL"});
     private static List<String> dateTypes = Arrays.asList(new String[] {"DATE"});
     private static List<String> timestampTypes =
             Arrays.asList(new String[] {"TIMESTAMP", "TIMESTAMP WITH LOCAL TIME ZONE"});
     private static List<String> timeTypes = Arrays.asList(new String[] {});
     private static List<String> refCursorTypes = Arrays.asList(new String[] {});
-    private static List<String> booleanTypes = Arrays.asList(new String[] {"BOOLEAN"});
+    private static List<String> booleanTypes = Arrays.asList(new String[] {"BOOLEAN", "BOOL"});
     private static List<String> varBinaryTypes = Arrays.asList(new String[] {});
     private static List<String> blobTypes = Arrays.asList(new String[] {});
     private static List<String> clobTypes = Arrays.asList(new String[] {});
@@ -153,6 +156,9 @@ public class ExasolEnvironment extends AbstractDbEnvironment {
             return java.sql.Types.BLOB;
         if (varBinaryTypes.contains(dataType))
             return java.sql.Types.VARBINARY;
+        if (shortTypes.contains(dataType))
+            return java.sql.Types.SMALLINT;
+
 
         throw new UnsupportedOperationException("Type " + dataType + " is not supported");
     }
@@ -188,6 +194,8 @@ public class ExasolEnvironment extends AbstractDbEnvironment {
             return java.sql.Blob.class;
         if (varBinaryTypes.contains(dataType))
             return java.sql.Blob.class;
+        if (shortTypes.contains(dataType))
+            return Short.class;
         throw new UnsupportedOperationException("Type " + dataType + " is not supported");
     }
 

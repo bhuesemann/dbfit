@@ -1,0 +1,35 @@
+---
+Test
+---
+!3 INTEGER, SMALLINT, DECIMAL
+
+!| Query | !-
+select 1e5 integer_type, 1 small_integer_type, 3.5 dec_type
+union all
+select -1e5, -1, -3.5 
+-! |
+| integer_type | small_integer_type |dec_type|
+| 100000 | 1 |3.5|
+| -100000 | -1 |-3.5|
+
+
+!3 Date, Timestamp
+!|Query|!-
+select 
+to_date('2020-01-01', 'YYYY-DD-MM')dt, 
+to_timestamp('2020-01-01 12:00:00', 'YYYY-DD-MM HH:MI:SS') ts 
+-!|
+|dt|ts|
+|2020-01-01|2020-01-01 12:00:00.0|
+
+!3 Boolean
+!|Query|!-
+select TRUE testtrue, FALSE testfalse
+-!|
+|testtrue|testfalse|
+|true|false|
+
+!3 Hash
+!|Query|select HASH_MD5('abc') md5|
+|md5|
+|900150983cd24fb0d6963f7d28e17f72|

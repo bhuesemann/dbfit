@@ -21,4 +21,4 @@ All numbers map to decimal, except float which maps to float
 !4 Number scale doesn't matter if values are the same
 |Query|select * from datatypetest where n1 is not null|
 |n1|n2?|
-|11.100|11.000|
+|11.100|11|
