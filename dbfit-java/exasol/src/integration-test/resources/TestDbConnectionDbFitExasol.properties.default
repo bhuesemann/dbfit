@@ -1,0 +1,11 @@
+# DBFit connection properties file
+#
+#1) Either specify full connection string
+connection-string=jdbc:;
+#
+#2) OR specify service, username and password as separate properties
+#service=
+#username=
+#password=
+#optionally specify a database name
+#database=

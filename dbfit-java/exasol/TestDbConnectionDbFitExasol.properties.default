@@ -1,0 +1,4 @@
+service=192.168.1.182
+username=sys
+password=exasol
+database=user1
