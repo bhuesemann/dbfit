@@ -111,10 +111,6 @@ task wikiDocsDir {
     }
 }
 
-def fitnesseJar() {
-    fileTree(dir: 'custom_libs', include: 'fitnesse-*.jar').getSingleFile()
-}
-
 task fitnesseUpdateList {
     doLast {
         copy {
@@ -156,6 +152,10 @@ task wikiDocs(dependsOn: [wikiDocsUpdateList]) {
 
         ant.jar(destfile: 'dist/lib/dbfit-docs-' + dbfitVersion + '.jar', basedir: 'docs', level: 9)
     }
+}
+
+def fitnesseJar() {
+    fileTree(dir: 'dist/lib', include: 'fitnesse-*standalone.jar').getSingleFile()
 }
 
 def flattenPath(def path) {
