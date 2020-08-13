@@ -364,10 +364,11 @@ def publicOracleCompileDeps = [
 
 project('oracle') {
     description = 'DBFit Oracle engine'
-
+    // jdk8 compatible drivers
+    // see https://www.oracle.com/database/technologies/maven-central-guide.html
     dependencies {
         implementation project(':dbfit-java:core')
-		implementation 'com.oracle.database.jdbc:ojdbc8dms:12.2.0.1'		
+		implementation 'com.oracle.database.jdbc:ojdbc8-production:19.7.0.0'		
         api publicOracleCompileDeps
         testImplementation "org.mockito:mockito-core:${mockitoVersion}"
     }
